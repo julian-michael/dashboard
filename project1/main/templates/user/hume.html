@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% csrf_token %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Couple Movie Night</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script defer src="script.js"></script> -->
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: white;
+        }
+        .navbar {
+            background-color: #0f3460;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            background: #16213e;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Couple Movie Night</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#orders">Order Details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profile">{{ T1 } }</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <div class="container text-center" id="home">
+        <h2>Welcome to Couple Movie Night</h2>
+        <p>Watch and share movies together with your loved one.</p>
+    </div>
+
+    <!-- Order Details Section -->
+    <div class="container mt-5" id="orders">
+        <h2 class="text-center">Your Orders</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h5>Movie Title: Inception</h5>
+                    <p>Status: Completed</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3 mt-3">
+                    <h5>Movie Title: Titanic</h5>
+                    <p>Status: Pending</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="container mt-5" id="profile">
+        <h2 class="text-center">Your Profile</h2>
+        <div class="card p-3 mx-auto" style="max-width: 400px;" method="post">
+            <h5>Name: John Doe</h5>
+            <p>{{email}}</p>
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
